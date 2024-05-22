@@ -15,7 +15,9 @@ def CleanUp(image_path):
 
 def SaveImage(post_image):
         try:
-            path = os.path.join('temp', post_image.filename)
+            if not os.path.exists("temp"):
+                os.makedirs("temp")
+            path = os.path.join("temp", post_image.filename)
             post_image.save(path)
             return path
         except Exception as Error:
